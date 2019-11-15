@@ -4,6 +4,10 @@
 from setuptools import find_packages
 from setuptools import setup
 
+def parse_requirements(filename):
+    with open(filename, "r") as f:
+        for line in f:
+            yield line.strip()
 
 setup(
     name='rayvision_utils',
@@ -14,11 +18,7 @@ setup(
     packages=find_packages('.'),
     description='',
     entry_points={},
-    install_requires=[
-        'future==0.17',
-        'rayvision_log',
-        'rayvision_api'
-    ],
+    install_requires=list(parse_requirements("requirements.txt")),
     classifiers=[
         'Programming Language :: Python',
         'Programming Language :: Python :: 2',
