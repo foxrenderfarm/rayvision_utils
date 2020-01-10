@@ -8,6 +8,7 @@ PROGRESS_SUBFAILED = 'Submit task failed.'
 VERSION_NOT_MATCH = ("Project configuration version and scenario version"
                      "mismatch.")
 ERROR9899_CGEXE_NOTEXIST = '{} software of scene has not been found.'
+ERROR_CGFILE_NOTEXIST = '{} cg file not been found.'
 ERROR9898_PROJECT_VERSFION = ('{} version of scene is different from the'
                               'version you configured for the project.')
 ERROR_GETCGVERSION_EXCEPTION = 'Getting {} software version failed.'
