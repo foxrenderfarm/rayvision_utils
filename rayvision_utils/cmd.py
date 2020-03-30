@@ -16,7 +16,8 @@ from rayvision_utils.utils import VERSION
 class Cmd(object):
     """Execute the cmd command."""
 
-    def run(self, cmd, shell=False, log_output=True):
+    @classmethod
+    def run(cls, cmd, shell=False, log_output=True):
         """Execute the cmd command to print the output information of cmd.
 
         Args:
@@ -36,19 +37,15 @@ class Cmd(object):
         log = logging.getLogger(__name__).info
 
         log("run command:\n%s", cmd)
-        cmd = self.compatible(cmd)
+        cmd = cls.compatible(cmd)
         res_data = subprocess.Popen(cmd, stdout=subprocess.PIPE,
                                     stderr=subprocess.PIPE, shell=shell)
+        while res_data.poll() is None:
+            result_line = res_data.stdout.readline().strip()
+            if result_line:
+                log(result_line)
         stdout, stderr = res_data.communicate()
-        stdout = str2unicode(stdout)
-        stderr = str2unicode(stderr)
 
-        if log_output is True:
-            log("stdout:\n")
-            log(stdout)
-        if stderr:
-            log("stderr:\n")
-            log(stderr)
         return res_data.returncode, stdout, stderr
 
     @staticmethod
