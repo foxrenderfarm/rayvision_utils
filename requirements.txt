@@ -1,5 +1,5 @@
-rayvision_log
-rayvision_api
-future
-requests
-tenacity
+rayvision_log>=0.3.3
+rayvision_api>=1.0.1
+future==0.18.2
+requests==2.23.0
+tenacity==6.0.0
