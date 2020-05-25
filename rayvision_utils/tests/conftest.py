@@ -10,7 +10,6 @@ References:
 
 # pylint: disable=import-error
 import pytest
-from rayvision_api.task.handle import RayvisionTask
 
 from rayvision_utils.cmd import Cmd
 
@@ -49,23 +48,22 @@ def handle_cmd():
 
 
 @pytest.fixture()
-def task(user_info, cg_file, mocker):
-    """Create an RayvisionTask object."""
-    mocker_task_id = mocker.patch.object(RayvisionTask, 'get_task_id')
-    mocker_task_id.return_value = '1234567'
-    mocker_user_id = mocker.patch.object(RayvisionTask, 'get_user_id')
-    mocker_user_id.return_value = '10000012'
-    mocker_user_id = mocker.patch.object(RayvisionTask,
-                                         'check_and_add_project_name')
-    mocker_user_id.return_value = '147258'
-    return RayvisionTask(cg_file=cg_file['cg_file'], **user_info)
+def api(user_info):
+    from rayvision_api import RayvisionAPI
+    render_para = {
+        "domain": user_info["domain"],
+        "platform": user_info["platform"],
+        "access_id": user_info["access_id"],
+        "access_key": user_info["access_key"],
+    }
+    return RayvisionAPI(**render_para)
 
 
 @pytest.fixture()
-def check(task):
+def check(api):
     """Create an RayvisionCheck object."""
     from rayvision_api.task.check import RayvisionCheck
-    return RayvisionCheck(task)
+    return RayvisionCheck(api)
 
 
 @pytest.fixture()
@@ -94,10 +92,3 @@ def tips():
     """Create an TipsInfo object."""
     from rayvision_utils.exception.tips import TipsInfo
     return TipsInfo()
-
-
-@pytest.fixture()
-def json_handle(cg_file, task):
-    """Create an JsonHandle object."""
-    from rayvision_utils.json_handle import JsonHandle
-    return JsonHandle(cg_file['cg_file'], task, 20, '')
