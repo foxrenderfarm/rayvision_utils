@@ -10,6 +10,7 @@ from rayvision_utils.exception.exception import RayvisionError
 
 def test_rayvison_error():
     """Test rayvison error this interface."""
+
     def post_info():
         raise RayvisionError(20000, 'Rayvision Error.')
 
@@ -21,6 +22,7 @@ def test_rayvison_error():
 
 def test_rayvision_api_error():
     """Test rayvison api error this interface."""
+
     def post_info():
         raise RayvisionAPIError(123415, 'Rayvision Error.', 'tests.com')
 
