@@ -29,7 +29,8 @@ TASK_INFO = {
         'render_layer_type': '0',
         'user_id': '',
         'os_name': '1',
-        'ram': '64'
+        'ram': '64',
+        'hardwareConfigId': ''
     },
     'software_config': {},
     'scene_info': {},
@@ -44,10 +45,12 @@ CG_SETTING = {
     'Clarisse': '2013',
     'Blender': '2007',
     '3ds Max': '2001',
+    'C4d': '2005',
     '2000': 'Maya',
     '2004': 'Houdini',
     '2016': 'Katana',
     '2013': 'Clarisse',
     '2007': 'Blender',
-    '2001': '3ds Max'
+    '2001': '3ds Max',
+    '2005': 'C4d'
 }
