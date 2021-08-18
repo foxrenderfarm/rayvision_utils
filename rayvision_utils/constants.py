@@ -30,7 +30,8 @@ TASK_INFO = {
         'user_id': '',
         'os_name': '1',
         'ram': '64',
-        'hardwareConfigId': ''
+        'hardwareConfigId': '',
+        'graphics_cards_num': '2'
     },
     'software_config': {},
     'scene_info': {},
