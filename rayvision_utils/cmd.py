@@ -39,7 +39,7 @@ class Cmd(object):
         log("run command:\n%s", cmd)
         cmd = cls.compatible(cmd)
         res_data = subprocess.Popen(cmd, stdout=subprocess.PIPE,
-                                    stderr=subprocess.PIPE, shell=shell)
+                                    stderr=subprocess.STDOUT, shell=shell)
         while res_data.poll() is None:
             result_line = res_data.stdout.readline().strip()
             if result_line:
