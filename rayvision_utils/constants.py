@@ -31,6 +31,7 @@ TASK_INFO = {
         'os_name': '1',
         'ram': '64',
         'hardwareConfigId': '',
+        'hardwareConfigIds': [],
         'graphics_cards_num': '2'
     },
     'software_config': {},
@@ -53,5 +54,6 @@ CG_SETTING = {
     '2013': 'Clarisse',
     '2007': 'Blender',
     '2001': '3ds Max',
-    '2005': 'C4d'
+    '2005': 'C4d',
+    'Unreal engine': '2020'
 }
